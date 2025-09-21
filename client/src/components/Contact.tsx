@@ -5,10 +5,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Phone, Mail, MapPin, Clock, MessageSquare, Send } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+import { Phone, Mail, MapPin, Clock, MessageSquare, Send, CheckCircle } from "lucide-react";
+import type { InsertContactSubmission } from "@shared/schema";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<InsertContactSubmission>({
     name: "",
     email: "",
     phone: "",
@@ -16,17 +20,76 @@ export default function Contact() {
     budget: "",
     message: "",
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const { toast } = useToast();
 
-  const handleInputChange = (field: string, value: string) => {
+  const contactMutation = useMutation({
+    mutationFn: async (data: InsertContactSubmission) => {
+      const response = await apiRequest('POST', '/api/contact', data);
+      return response.json();
+    },
+    onSuccess: (data) => {
+      setIsSubmitted(true);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        projectType: "",
+        budget: "",
+        message: "",
+      });
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for your message! We'll contact you within 24 hours.",
+      });
+      console.log("Contact form submitted successfully:", data);
+    },
+    onError: (error) => {
+      let errorMessage = "Something went wrong. Please try again.";
+      
+      // Try to parse error message for better user feedback
+      try {
+        const errorText = error.message;
+        if (errorText.includes("Please check your form data")) {
+          errorMessage = "Please check your form data and try again.";
+        } else if (errorText.includes("email")) {
+          errorMessage = "Please enter a valid email address.";
+        } else if (errorText.includes("name")) {
+          errorMessage = "Please enter a valid name (at least 2 characters).";
+        } else if (errorText.includes("message")) {
+          errorMessage = "Please provide more details about your project (at least 10 characters).";
+        }
+      } catch {
+        // Use default error message
+      }
+      
+      toast({
+        title: "Error sending message",
+        description: errorMessage,
+        variant: "destructive",
+      });
+      console.error("Contact form submission error:", error);
+    },
+  });
+
+  const handleInputChange = (field: keyof InsertContactSubmission, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    console.log(`Contact form updated: ${field} = ${value}`);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Contact form submitted:", formData);
-    // todo: remove mock functionality - implement real form submission
-    alert("Thank you for your message! We'll contact you within 24 hours.");
+    
+    // Basic validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.projectType || !formData.message.trim()) {
+      toast({
+        title: "Missing required fields",
+        description: "Please fill in all required fields marked with *",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    contactMutation.mutate(formData);
   };
 
   const contactInfo = [
@@ -167,7 +230,11 @@ export default function Contact() {
                     </div>
                     <div>
                       <Label htmlFor="projectType">Project Type *</Label>
-                      <Select onValueChange={(value) => handleInputChange("projectType", value)} required>
+                      <Select 
+                        value={formData.projectType} 
+                        onValueChange={(value) => handleInputChange("projectType", value)} 
+                        required
+                      >
                         <SelectTrigger data-testid="select-project-type">
                           <SelectValue placeholder="Select project type" />
                         </SelectTrigger>
@@ -185,7 +252,10 @@ export default function Contact() {
 
                   <div>
                     <Label htmlFor="budget">Project Budget</Label>
-                    <Select onValueChange={(value) => handleInputChange("budget", value)}>
+                    <Select 
+                      value={formData.budget} 
+                      onValueChange={(value) => handleInputChange("budget", value)}
+                    >
                       <SelectTrigger data-testid="select-budget">
                         <SelectValue placeholder="Select your budget range (optional)" />
                       </SelectTrigger>
@@ -213,9 +283,24 @@ export default function Contact() {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full" data-testid="button-submit-quote">
-                    <Send className="h-4 w-4 mr-2" />
-                    Request Free Quote
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full" 
+                    disabled={contactMutation.isPending}
+                    data-testid="button-submit-quote"
+                  >
+                    {contactMutation.isPending ? (
+                      <>
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="h-4 w-4 mr-2" />
+                        Request Free Quote
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>
