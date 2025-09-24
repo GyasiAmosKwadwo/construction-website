@@ -59,7 +59,7 @@ export default function About() {
             </h3>
             <div className="space-y-4 text-muted-foreground">
               <p data-testid="text-story-paragraph-1">
-                Founded by Gyasi Thompson in 2008, our construction company started with a simple mission: 
+                Founded by Gyasi Frank, our construction company started with a simple mission: 
                 to provide honest, quality construction services to our community. What began as a small 
                 residential contractor has grown into a full-service construction company.
               </p>

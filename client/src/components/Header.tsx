@@ -42,7 +42,7 @@ export default function Header() {
           <div className="hidden lg:flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
               <Phone className="h-4 w-4" />
-              <span data-testid="text-phone">(555) 123-4567</span>
+              <span data-testid="text-phone">(+233) 024 641 9847</span>
             </div>
             <Button variant="default" data-testid="button-get-quote">
               Get Quote
@@ -84,7 +84,7 @@ export default function Header() {
                 </div>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground px-2">
                   <Mail className="h-4 w-4" />
-                  <span>info@gyasisconstruction.com</span>
+                  <span>fgyasi807@gmail.com</span>
                 </div>
                 <Button variant="default" className="mx-2 mt-2" data-testid="button-mobile-get-quote">
                   Get Quote

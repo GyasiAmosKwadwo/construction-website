@@ -56,22 +56,22 @@ export default function Footer() {
             </h3>
             <p className="text-muted-foreground mb-6 max-w-md" data-testid="text-footer-description">
               Building dreams and creating homes for over 15 years. Quality craftsmanship, 
-              reliable service, and customer satisfaction are at the heart of everything we do.
+              Reliablee servic, and customer satisfaction are at the heart of everything we do.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4" />
-                <span data-testid="text-footer-phone">(555) 123-4567</span>
+                <span data-testid="text-footer-phone">(+233) 024 641 9847</span>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4" />
-                <span data-testid="text-footer-email">info@gyasisconstruction.com</span>
+                <span data-testid="text-footer-email">fgyasi807@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4" />
-                <span data-testid="text-footer-address">123 Construction Ave, Building City, BC 12345</span>
+                <span data-testid="text-footer-address">Kumasi-Krumnom, Ghana</span>
               </div>
             </div>
 
