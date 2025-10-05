@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Phone, Mail, MapPin, Facebook, MessageCircle, Video } from "lucide-react";
+import logoImage from "@assets/generated_images/logo.png";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -51,6 +52,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
+            <img src={logoImage} alt="Gyasi's Construction Logo" className="h-[95px] mb-4" data-testid="img-footer-logo" />
             <h3 className="text-2xl font-display font-bold text-primary mb-4" data-testid="text-footer-logo">
               Gyasi's Construction
             </h3>

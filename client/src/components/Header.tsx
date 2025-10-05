@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Mail } from "lucide-react";
+import logoImage from "@assets/generated_images/logo.png";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,7 +20,8 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-display font-bold text-primary" data-testid="text-logo">
+            <img src={logoImage} alt="Gyasi's Construction Logo" className="h-[140px]" data-testid="img-header-logo" />
+            <h1 className="text-2xl font-display font-bold text-primary ml-3" data-testid="text-logo">
               Gyasi's Construction
             </h1>
           </div>
