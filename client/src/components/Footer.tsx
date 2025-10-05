@@ -71,7 +71,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4" />
-                <span data-testid="text-footer-address">Kumasi-Krumnom, Ghana</span>
+                <span data-testid="text-footer-address">Kumasi-Krunom, Ghana</span>
               </div>
             </div>
 

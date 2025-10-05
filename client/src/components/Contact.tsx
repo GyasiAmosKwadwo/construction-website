@@ -96,19 +96,19 @@ export default function Contact() {
     {
       icon: Phone,
       title: "Phone",
-      content: "(555) 123-4567",
+      content: "(+233) 024 641 9847",
       description: "Call us during business hours"
     },
     {
       icon: Mail,
       title: "Email",
-      content: "info@gyasisconstruction.com",
+      content: "fgyasi807@gmail.com",
       description: "We respond within 24 hours"
     },
     {
       icon: MapPin,
       title: "Address",
-      content: "123 Construction Ave, Building City, BC 12345",
+      content: "Kumasi-Krunom, Ghana",
       description: "Visit our office or job sites"
     },
     {
@@ -172,7 +172,7 @@ export default function Contact() {
                   For urgent construction emergencies and repairs
                 </p>
                 <Button variant="destructive" size="sm" className="w-full" data-testid="button-emergency-call">
-                  Call (555) 911-HELP
+                  Call (+233) 0241775954
                 </Button>
               </CardContent>
             </Card>
