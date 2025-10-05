@@ -6,6 +6,12 @@ import { Calendar, MapPin, DollarSign } from "lucide-react";
 import residentialImage from "@assets/generated_images/Completed_residential_project_f82c0d5a.png";
 import commercialImage from "@assets/generated_images/Commercial_construction_project_2e7a12c5.png";
 import renovationImage from "@assets/generated_images/Kitchen_renovation_project_624fa6d2.png";
+import churchImage from "@assets/generated_images/church.jpeg";
+import commercialHouseImage from "@assets/generated_images/commercial-house.jpg";
+import schoolImage from "@assets/generated_images/school.jpeg";
+import hotelImage from "@assets/generated_images/hotel.jpg";
+import hostelImage from "@assets/generated_images/hostel.jpeg";
+import modernOfficeImage from "@assets/generated_images/Modern Office Building.jpeg";
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -78,6 +84,72 @@ export default function Projects() {
       duration: "6 months",
       budget: "$180,000",
       description: "Careful restoration of a Victorian-era home preserving original character while adding modern conveniences.",
+      status: "In Progress"
+    },
+    {
+      id: 7,
+      title: "Community Church",
+      category: "Commercial",
+      image: churchImage,
+      location: "Faith Community",
+      duration: "10 months",
+      budget: "$650,000",
+      description: "Beautiful community church with modern architecture and traditional elements, serving local congregation.",
+      status: "Completed"
+    },
+    {
+      id: 8,
+      title: "Commercial Building Complex",
+      category: "Commercial",
+      image: commercialHouseImage,
+      location: "Business District",
+      duration: "15 months",
+      budget: "$2.2M",
+      description: "Multi-story commercial building with retail spaces and office suites in the heart of the business district.",
+      status: "In Progress"
+    },
+    {
+      id: 9,
+      title: "Modern School Facility",
+      category: "Commercial",
+      image: schoolImage,
+      location: "Education Zone",
+      duration: "12 months",
+      budget: "$1.5M",
+      description: "Contemporary school building with state-of-the-art classrooms, labs, and recreational facilities.",
+      status: "Completed"
+    },
+    {
+      id: 10,
+      title: "Luxury Hotel Resort",
+      category: "Commercial",
+      image: hotelImage,
+      location: "Tourist Area",
+      duration: "20 months",
+      budget: "$4.8M",
+      description: "Five-star hotel resort with luxury amenities, spa, and conference facilities overlooking scenic views.",
+      status: "Planning"
+    },
+    {
+      id: 11,
+      title: "Student Hostel",
+      category: "Commercial",
+      image: hostelImage,
+      location: "University Campus",
+      duration: "8 months",
+      budget: "$950,000",
+      description: "Modern student accommodation with shared facilities, study areas, and recreational spaces.",
+      status: "Completed"
+    },
+    {
+      id: 12,
+      title: "Contemporary Office Tower",
+      category: "Commercial",
+      image: modernOfficeImage,
+      location: "Financial District",
+      duration: "18 months",
+      budget: "$3.2M",
+      description: "High-rise office building with smart technology integration and sustainable design features.",
       status: "In Progress"
     }
   ];
