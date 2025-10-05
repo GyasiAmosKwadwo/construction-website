@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, MessageCircle, Video } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -39,9 +39,9 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" }
+    { icon: Facebook, href: "https://www.facebook.com/profile.php?id=100078641064058", label: "Facebook" },
+    { icon: MessageCircle, href: "https://chat.whatsapp.com/JjNKXjp4hxC9bJyKe6yLqj", label: "WhatsApp" },
+    { icon: Video, href: "https://www.tiktok.com/@frank.gyasi2?_t=ZM-900FlwVlF1Q&_r=1", label: "TikTok" }
   ];
 
   return (
@@ -56,7 +56,7 @@ export default function Footer() {
             </h3>
             <p className="text-muted-foreground mb-6 max-w-md" data-testid="text-footer-description">
               Building dreams and creating homes for over 15 years. Quality craftsmanship, 
-              Reliablee servic, and customer satisfaction are at the heart of everything we do.
+              Reliable service, and customer satisfaction are at the heart of everything we do.
             </p>
             
             {/* Contact Info */}
